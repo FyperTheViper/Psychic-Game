@@ -6,7 +6,6 @@ var computerChoice;
 var alphabet = 'abcdefghijklmnopqrstuvwxyz'.split('');
 var spooky = new Audio("./assets/sounds/spooky.mp3")
 var image = document.getElementsByClassName("image2");
-image.src = "image1.jpg"
 
 var randomLetter = function() {
 computerChoice = alphabet[Math.floor(Math.random() * alphabet.length)];
@@ -35,6 +34,10 @@ document.onkeyup = function(event) {
     var userGuess = String.fromCharCode(event.keyCode).toLowerCase();
     var check = alphabet.includes(userGuess);
 
+    if (guessesLeft === 0) {
+        reset();
+    }
+
     guessesLeft--;
     guesses.push(userGuess);
     letterList();
@@ -59,8 +62,9 @@ document.onkeyup = function(event) {
         document.getElementById("losses").innerHTML = "Losses:      " + losses;
         alert("Sorry, " + userGuess.toUpperCase() + " was your final guess. My letter was " + computerChoice.toUpperCase() + ". (Oh well, prehaps the next candidate...)" );
         reset();
-    }
-}
+    } 
+} 
+
 return false;
 
 };
