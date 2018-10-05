@@ -11,7 +11,7 @@ img {
     width: 35%;
 }
 
-h1, h2, p {
+h1, h2, p, span {
     font-family: 'Saira Extra Condensed', sans-serif;
     color: #e5dfd2;
 }
@@ -31,6 +31,20 @@ p {
     padding: 10px;
 }
 
+span {
+    font-size: 1.7em;
+}
+
+button { 
+    border: none; 
+    background: #32394b;
+    margin-top: 15px;
+}
+
+button:active {
+    background: #4c546a;
+}
+
 .container {
     width: 100%;
     max-width: 900px;
@@ -42,6 +56,6 @@ p {
 
 @media (max-width:640px) {
     img {
-        width: 50%;
+        width: 70%;
     }
 }

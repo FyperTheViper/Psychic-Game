@@ -12,11 +12,12 @@
 </head>
 <body>
 
-    <img src="assets/images/psyeye.png" alt="I always feel like someone is watching me">
+    <img class="eye1" src="assets/images/psyeye.png" alt="I always feel like someone is watching me">
+    <!--<img class="eye2" src="assets/images/openpsyeye.png" alt="Who watches the Watchmen">-->
     
     <section class="container">
         <h1>Think You're Psychic? Maybe You Are...</h1>
-        <h2>Guess What Letter I'm Thinking Of</h2>
+        <h2>Tell me, what letter am I thinking of?</h2>
         <div>
             <p id="wins">Wins: </p>
         </div>
@@ -24,14 +25,14 @@
             <p id="losses">Losses: </p>
         </div>
         <div>
-            <p id="left">Guesses Left: </p>
+            <p id="left">Guesses Left: 9</p>
          </div>
          <div>
-            <p div id="guesses">Guesses So Far: </p>
+            <p div id="guesses">Guesses so Far: </p>
         </div>
 
-        <button>
-            Reset
+        <button value="Refresh Page" onClick="window.location.reload()">
+            <span>Reset</span>
         </button>
 
     </section>

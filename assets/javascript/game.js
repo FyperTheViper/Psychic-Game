@@ -5,6 +5,8 @@ var guesses = [];
 var computerChoice;
 var alphabet = 'abcdefghijklmnopqrstuvwxyz'.split('');
 var spooky = new Audio("./assets/sounds/spooky.mp3")
+var image = document.getElementsByClassName("image2");
+image.src = "image1.jpg"
 
 var randomLetter = function() {
 computerChoice = alphabet[Math.floor(Math.random() * alphabet.length)];
@@ -26,6 +28,7 @@ function reset() {
     letterList()
     left()
 };
+
 
 document.onkeyup = function(event) {
 
