@@ -70,13 +70,13 @@ document.onkeyup = function(event) {
         setTimeout(function() { 
             document.querySelector('.eye1').style.display = 'block' 
             document.querySelector('.eye2').style.display = 'none' 
-        }, 1200);
+        }, 2000);
         wins++;
         spooky.play();
         document.getElementById("wins").innerHTML = "Wins:      " + wins;
         setTimeout(function() {
             alert("You're right, " + computerChoice.toUpperCase() + " was my letter. Your psychic ability should be... developed.")
-        }, 500);
+        }, 1000);
         reset();
 
     //losing conditional
