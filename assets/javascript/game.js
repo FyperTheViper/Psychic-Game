@@ -1,51 +1,48 @@
-let wins = 0;
-let losses = 0;
-let guessesLeft = 9;
-let guesses = []
+var wins = 0;
+var losses = 0;
+var guessesLeft = 9;
+var guesses = [];
+var computerChoice;
 alphabet = 'abcdefghijklmnopqrstuvwxyz'.split('');
 
-let randomLetter = () => {
- computerChoice = alphabet[Math.floor(Math.random() * alphabet.length)];
-}
+var randomLetter = function() {
+computerChoice = alphabet[Math.floor(Math.random() * alphabet.length)];
+};
+
+var letterList = function() {
+    document.getElementById("left").innerHTML = "Guesses Left: " + guessesLeft
+};
+
+var left = function() {
+    document.getElementById("guesses").innerHTML = "Guesses so far: " + guesses.join(",");
+};
 
 function reset() {
+    guessedLetters = [];
     totalGuesses = 9;
     guessesLeft = 9;
-    guessedLetters = [];
+    guesses = [];
     randomLetter();
-}
+};
 
 document.onkeyup = function(event) {
-    var userGuess = String.fromCharCode(event.keyCode).toLowerCase();
-    randomLetter();
-    var check = computerChoice.includes(userGuess);
 
-    if (userGuess === computerChoice) {
+    var userGuess = event.key;
+    guessesLeft--;
+    guesses.push(userGuess);
+    letterList();
+    left();
+
+    if ((guessesLeft > 0) && (userGuess === computerChoice)) {
         wins++;
-        document.querySelector('#wins').innerHTML = "Wins: " + wins;
-        youWon();
-    }
-
-    if (userGuess != computerChoice) {
-        guessesLeft--;
-        document.querySelector('#let').innerHTML = "Your Guesses so far: " + guessedLetters.join(', ');
-    }
-
-    if ( guessesLeft === 0 ) {
+        reset();
+        document.getElementById("wins").innerHTML = "Wins: " + wins;
+        alert("You're right, " + computerChoice + " was my letter. Your psychic ability is worrisome...");
+    }; if (guessesLeft == 0) {
         losses++;
-        document.querySelector('#losses').innerHTML = "Losses: " + losses;
-        alertLoss();
-	}
-};
+        reset();
+        document.getElementById("losses").innerHTML = "Losses: " + losses;
+        alert("Sorry, " + userGuess + " was your final guess. My letter was " + computerChoice + ". (Whew, I was getting worried...)" );
+    };
 
-
-
-let youWon = () => {
-    alert("You're right, " + computerChoice + " was my letter. Your psychic ability is worrisome...");
-    reset();
-};
-
-let youLost = () => {
-    alert("Sorry, " + userGuess + " is incorrect. My number was " + computerChoice + ". (Whew, I was getting worried...)" );
-    reset();
 };
