@@ -1,12 +1,11 @@
 //variables
+//thank .split to divide up string faster
+var alphabet = 'abcdefghijklmnopqrstuvwxyz'.split('');
 var wins = 0;
 var losses = 0;
 var guessesLeft = 9;
 var guesses = [];
-var computerChoice;
-
-//thank .split to divide up string faster
-var alphabet = 'abcdefghijklmnopqrstuvwxyz'.split('');
+var userGuess = [];
 
 //very spooky sound that plays when win conditional is met
 var spooky = new Audio("./assets/sounds/spooky.mp3")
@@ -36,6 +35,7 @@ function reset() {
     left();
 };
 
+
 //where the magic happens, function starts when key is pressed
 document.onkeyup = function(event) {
 
@@ -53,7 +53,6 @@ document.onkeyup = function(event) {
     guesses.push(userGuess);
     letterList();
     left();
-    randomLetter();
 
     //finger wagging message for when non valid key is pressed
     if (check === false) {
@@ -73,21 +72,20 @@ document.onkeyup = function(event) {
         }, 2000);
         wins++;
         spooky.play();
-        document.getElementById("wins").innerHTML = "Wins:      " + wins;
+        document.getElementById("wins").innerHTML = "Wins: " + wins;
         setTimeout(function() {
-            alert("You're right, " + computerChoice.toUpperCase() + " was my letter. Your psychic ability should be... developed.")
-        }, 1000);
+            alert("You're right, " + computerChoice.toUpperCase() + " was my letter. Your psychic ability should be... developed." )
+        }, 200);
         reset();
 
     //losing conditional
     } else if (guessesLeft == 0) {
         losses++;
-        document.getElementById("losses").innerHTML = "Losses:      " + losses;
+        document.getElementById("losses").innerHTML = "Losses: " + losses;
         alert("Sorry, " + userGuess.toUpperCase() + " was your final guess. My letter was " + computerChoice.toUpperCase() + ". (Oh well, prehaps the next candidate...)" );
         reset();
     } 
 } 
 
 return false;
-
 };
