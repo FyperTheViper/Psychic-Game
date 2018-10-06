@@ -5,7 +5,8 @@ var wins = 0;
 var losses = 0;
 var guessesLeft = 9;
 var guesses = [];
-var userGuess = [];
+var userGuess ;
+var computerChoice;
 
 //very spooky sound that plays when win conditional is met
 var spooky = new Audio("./assets/sounds/spooky.mp3")
@@ -63,6 +64,7 @@ document.onkeyup = function(event) {
     
     //win conditional
     if ((guessesLeft > 0) && (userGuess === computerChoice)) {
+        console.log("WIN..."+ userGuess + "  " + computerChoice);
         //changes image upon win, with timeouts
         document.querySelector('.eye1').style.display = 'none' 
         document.querySelector('.eye2').style.display = 'block' 
@@ -73,16 +75,16 @@ document.onkeyup = function(event) {
         wins++;
         spooky.play();
         document.getElementById("wins").innerHTML = "Wins: " + wins;
-        setTimeout(function() {
-            alert("You're right, " + computerChoice.toUpperCase() + " was my letter. Your psychic ability should be... developed." )
-        }, 200);
+            alert("You're right, " + computerChoice + " was my letter. Your psychic ability should be... developed." );
         reset();
 
     //losing conditional
     } else if (guessesLeft == 0) {
+        console.log(userGuess)
+
         losses++;
         document.getElementById("losses").innerHTML = "Losses: " + losses;
-        alert("Sorry, " + userGuess.toUpperCase() + " was your final guess. My letter was " + computerChoice.toUpperCase() + ". (Oh well, prehaps the next candidate...)" );
+        alert("Sorry, " + userGuess + " was your final guess. My letter was " + computerChoice + ". (Oh well, prehaps the next candidate...)" );
         reset();
     } 
 } 
