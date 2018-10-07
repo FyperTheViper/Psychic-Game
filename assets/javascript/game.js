@@ -54,7 +54,11 @@ document.onkeyup = function(event) {
     guesses.push(userGuess);
     letterList();
     left();
-
+    
+    //prevents the first instance of the game from having an undefined choice
+    if (computerChoice === undefined) {
+        randomLetter();
+    }
     //finger wagging message for when non valid key is pressed
     if (check === false) {
         alert("Not a valid key, use a - z. (I thought you were psychic?)");
